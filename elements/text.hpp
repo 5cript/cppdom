@@ -2,9 +2,7 @@
 
 #include "inline_html.hpp"
 
-#include <cstdio>
-
-namespace Electronpp::Elements
+namespace CppDom::Elements
 {
     class text : public InlineHtml
     {
@@ -17,8 +15,7 @@ namespace Electronpp::Elements
         void renderInto(emscripten::val& parent) override
         {
             using emscripten::val;
-
-            parent.set("textContent", emscripten::val{html_});
+            parent.set("innerText", emscripten::val{html_});
         }
 
         text* clone() const override

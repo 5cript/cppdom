@@ -7,7 +7,7 @@
 
 #include "config.hpp"
 
-namespace Electronpp
+namespace CppDom
 {
     // use is optional
     template <typename BaseT>

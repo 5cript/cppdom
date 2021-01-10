@@ -9,7 +9,7 @@
 
 #include <cstdio>
 
-namespace Electronpp
+namespace CppDom
 {
     struct Element : public cloneable <Element>
     {

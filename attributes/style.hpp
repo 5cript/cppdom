@@ -4,28 +4,28 @@
 
 #include <sstream>
 
-namespace Electronpp::Attributes
+namespace CppDom::Attributes
 {
-    struct styleProp {
+    struct StyleProp {
         char const* name;
-        constexpr styleProp(char const* name)
+        constexpr StyleProp(char const* name)
             : name{name}
         {
 
         }
-        std::string operator=(char const* col)
+        std::string operator=(char const* value)
         {
-            return std::string{name} + ":" + col;
+            return std::string{name} + ":" + value;
         }
-        std::string operator=(std::string const& col)
+        std::string operator=(std::string const& value)
         {
-            return std::string{name} + ":" + col;
+            return std::string{name} + ":" + value;
         }
     };
 
-    static constexpr styleProp operator"" _cssa(char const* name, std::size_t)
+    static constexpr StyleProp operator"" _cssa(char const* name, std::size_t)
     {
-        return styleProp{name};
+        return StyleProp{name};
     };
 
     template <typename... Properties>

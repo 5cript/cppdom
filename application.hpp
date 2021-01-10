@@ -1,8 +1,9 @@
 #pragma once
 
 #include "body.hpp"
+#include "bindings.hpp"
 
-namespace Electronpp
+namespace CppDom
 {
     class Application
     {

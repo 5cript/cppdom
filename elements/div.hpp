@@ -2,7 +2,7 @@
 
 #include "html_element.hpp"
 
-namespace Electronpp::Elements
+namespace CppDom::Elements
 {
     template <typename... T>
     struct div : public HtmlElementProximate <T...>

@@ -1,13 +1,14 @@
 #pragma once
 
 #include "element.hpp"
+#include "text.hpp"
 #include "../attributes/attribute.hpp"
 
 #include <emscripten/val.h>
 
 #include <iostream>
 
-namespace Electronpp
+namespace CppDom
 {
     template <typename... Children>
     struct HtmlElement : public Element
@@ -49,5 +50,26 @@ namespace Electronpp
                 std::forward <ElementT&&> (elements)...
             };
         }
+
+        HtmlElement <Elements::text> operator()(char const* txt) &&
+        {
+            return HtmlElement <Elements::text>{
+                std::move(name),
+                std::move(attributes),
+                Elements::text{txt}
+            };
+        }
     };
+}
+
+#define MAKE_HTML_TAG(NAME) \
+namespace CppDom::Elements \
+{ \
+    template <typename... T> \
+    struct NAME : public HtmlElementProximate <T...> \
+    { \
+        NAME(T&&... t) : HtmlElementProximate <T...>(#NAME, std::forward <T&&>(t)...) {} \
+\
+        using HtmlElementProximate <T...>::operator(); \
+    }; \
 }

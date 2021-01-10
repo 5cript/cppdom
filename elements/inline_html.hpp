@@ -4,7 +4,7 @@
 
 #include <emscripten/val.h>
 
-namespace Electronpp
+namespace CppDom
 {
     class InlineHtml : public Element
     {   
